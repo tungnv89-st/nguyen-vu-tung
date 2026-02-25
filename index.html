@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nguyen Vu Tung — Founder & Technical Game Director</title>
+  <meta name="description" content="Portfolio — Founder | Technical Game Director | Senior Unity Developer | Game Designer | Game Developer" />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#0f1733;
+      --muted:#9db0d0;
+      --text:#e9efff;
+      --accent:#6aa8ff;
+      --accent2:#8b5cf6;
+      --line: rgba(255,255,255,.08);
+      --shadow: 0 14px 40px rgba(0,0,0,.38);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(106,168,255,.22), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(139,92,246,.20), transparent 55%),
+        radial-gradient(800px 500px at 50% 110%, rgba(106,168,255,.10), transparent 60%),
+        linear-gradient(180deg, #070a14, var(--bg) 25%, #070a14 120%);
+      line-height: 1.55;
+    }
+    a{color: inherit; text-decoration: none}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 34px 18px 70px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      position: sticky; top: 12px; z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(9, 13, 27, .55);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .brand{display:flex; align-items:center; gap:10px; min-width: 180px;}
+    .logo{
+      width:34px; height:34px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(106,168,255,1), rgba(139,92,246,1));
+      box-shadow: 0 12px 26px rgba(106,168,255,.18);
+    }
+    .brand .name{font-weight: 700; letter-spacing:.2px}
+    .brand .tag{font-size: 12px; color: var(--muted)}
+    .nav{display:flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end;}
+    .chip{
+      font-size: 12px; color: var(--muted);
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      transition: .2s ease;
+    }
+    .chip:hover{color: var(--text); border-color: rgba(106,168,255,.35); background: rgba(106,168,255,.08)}
+    .hero{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr; }
+      .brand{min-width: unset}
+    }
+    .panel{
+      background: rgba(15,23,51,.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel.pad{padding: 22px}
+    .headline{
+      font-size: 44px; line-height: 1.05; margin:0 0 10px;
+      letter-spacing: -0.8px;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 62ch;
+      margin: 0 0 18px;
+    }
+    .badges{display:flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 16px}
+    .badge{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size: 12px;
+      color: rgba(233,239,255,.92);
+    }
+    .cta{display:flex; flex-wrap: wrap; gap: 10px; margin-top: 14px}
+    .btn{
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-weight: 600;
+      font-size: 13px;
+      display:inline-flex; align-items:center; gap: 10px;
+      transition: .2s ease;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(106,168,255,.95), rgba(139,92,246,.92));
+      border-color: rgba(255,255,255,.14);
+      box-shadow: 0 16px 38px rgba(106,168,255,.18);
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(106,168,255,.35)}
+    .btn.primary:hover{transform: translateY(-1px); filter: brightness(1.02)}
+    .icon{width: 18px; height: 18px; display:inline-block; background: rgba(255,255,255,.18); border-radius: 6px;}
+    .profile{display:flex; flex-direction: column; gap: 14px; height:100%;}
+    .avatar{
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 22px;
+      border: 1px dashed rgba(255,255,255,.28);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        radial-gradient(800px 240px at 30% 10%, rgba(106,168,255,.20), transparent 60%),
+        radial-gradient(800px 240px at 80% 90%, rgba(139,92,246,.18), transparent 55%);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(233,239,255,.70);
+      text-align:center;
+      padding: 14px;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mini{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+    @media (max-width: 520px){
+      .mini{grid-template-columns: 1fr}
+      .headline{font-size: 36px}
+    }
+    .mini .card{padding: 14px; border-radius: 18px; border: 1px solid var(--line); background: rgba(17,28,61,.62);}
+    .k{font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em}
+    .v{font-size: 14px; margin-top: 6px}
+    section{margin-top: 18px}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap: 12px; margin: 8px 2px 12px;}
+    h2{font-size: 18px; margin:0; letter-spacing: -0.2px;}
+    .hint{font-size: 12px; color: var(--muted)}
+    .grid{display:grid; grid-template-columns: 1fr 1fr; gap: 14px;}
+    @media (max-width: 900px){ .grid{grid-template-columns: 1fr} }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(15,23,51,.58);
+      box-shadow: 0 12px 34px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .card .body{padding: 18px}
+    .card h3{margin:0 0 8px; font-size: 16px}
+    .card p{margin:0; color: var(--muted); font-size: 13px}
+    .list{margin: 12px 0 0; padding: 0; list-style: none; display:grid; gap: 8px;}
+    .list li{display:flex; gap: 10px; align-items:flex-start; color: rgba(233,239,255,.88); font-size: 13px;}
+    .dot{width: 8px; height: 8px; border-radius: 999px; background: linear-gradient(135deg, rgba(106,168,255,1), rgba(139,92,246,1)); margin-top: 6px; flex: 0 0 auto;}
+    .shots{display:grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px; background: rgba(0,0,0,.08); border-top: 1px solid var(--line);}
+    .shot{
+      aspect-ratio: 16 / 10;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.24);
+      background: linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(233,239,255,.65);
+      font-size: 12px;
+      text-align:center;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .shot img{width:100%; height:100%; object-fit: cover; border-radius: 14px; display:block; opacity: 0; transition: opacity .2s ease;}
+    .shot .label{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding: 10px; text-align:center; color: rgba(233,239,255,.65); pointer-events:none;}
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px}
+    .pill{font-size: 12px; padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line); color: rgba(233,239,255,.85); background: rgba(255,255,255,.03); font-family: var(--mono);}
+    .projects{display:grid; grid-template-columns: 1fr 1fr; gap: 14px;}
+    @media (max-width: 900px){ .projects{grid-template-columns: 1fr} }
+    .project-top{display:flex; align-items:flex-start; justify-content:space-between; gap: 10px; margin-bottom: 10px;}
+    .meta{font-size: 12px; color: var(--muted); display:flex; flex-wrap:wrap; gap: 10px;}
+    .meta span{padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.03);}
+    .link{font-size: 12px; padding: 9px 12px; border-radius: 12px; border: 1px solid rgba(106,168,255,.30); color: rgba(233,239,255,.92); background: rgba(106,168,255,.08); white-space: nowrap;}
+    .link:hover{border-color: rgba(106,168,255,.55); background: rgba(106,168,255,.12)}
+    .footer{
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: rgba(15,23,51,.56);
+      color: var(--muted);
+      font-size: 12px;
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap: 10px;
+    }
+    .mono{font-family: var(--mono)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">Nguyen Vu Tung</div>
+          <div class="tag">Founder • Technical Game Director • Senior Unity Developer</div>
+        </div>
+      </div>
+      <div class="nav">
+        <a class="chip" href="#about">About</a>
+        <a class="chip" href="#strengths">Core Expertise</a>
+        <a class="chip" href="#projects">Game Projects</a>
+        <a class="chip" href="#process">Production</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="hero" id="about">
+      <div class="panel pad">
+        <h1 class="headline">Founder & Technical Game Director</h1>
+        <p class="sub">
+          Founder / Technical Game Director with senior Unity (2D &amp; 3D) experience, combining gameplay design,
+          rapid prototyping, and production discipline. Background includes mobile engineering leadership, microservices
+          architecture, and CI/CD workflows for real-world products.
+        </p>
+
+        <div class="badges">
+          <span class="badge">Founder</span>
+          <span class="badge">Technical Game Director</span>
+          <span class="badge">PM / Producer</span>
+          <span class="badge">Game Designer</span>
+          <span class="badge">Senior Unity Dev (2D/3D)</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="#projects"><span class="icon" aria-hidden="true"></span>View Game Projects</a>
+          <a class="btn" href="#contact"><span class="icon" aria-hidden="true"></span>Contact</a>
+        </div>
+
+        <div style="margin-top:18px; border-top:1px solid var(--line); padding-top:16px;">
+          <div class="k">Positioning</div>
+          <div class="v">
+            I lead the full lifecycle: <span class="mono">Ideation → Design → Build → Test → Release</span>,
+            while staying hands-on in Unity development to keep iteration speed high and quality consistent.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel pad profile">
+        <div class="avatar">
+          <img src="avatar.png" alt="Avatar Placeholder" style="width:100%;height:100%;object-fit:cover;border-radius:22px;">
+          <div style="display:none;">
+            <div>Replace this area with your photo later.</div>
+            <div style="margin-top:10px; font-size:12px; opacity:.8">Recommended portrait size: 800×1200 (vertical avatar)</div>
+          </div>
+        </div>
+
+        <div class="mini">
+          <div class="card">
+            <div class="k">Focus</div>
+            <div class="v">Puzzle &amp; Hybrid‑Casual • Mobile</div>
+          </div>
+          <div class="card">
+            <div class="k">Cycle</div>
+            <div class="v">2–4 weeks per title (prototype → release)</div>
+          </div>
+          <div class="card">
+            <div class="k">Tools</div>
+            <div class="v">Unity • Jira • Agile</div>
+          </div>
+          <div class="card">
+            <div class="k">Edge</div>
+            <div class="v">Design + Engineering alignment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="strengths">
+      <div class="section-head">
+        <h2>Core Expertise</h2>
+        <div class="hint"></div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="body">
+            <h3>Technical Game Direction</h3>
+            <p>Scalable Unity architecture that enables fast iteration without production debt.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Gameplay system design (2D/3D)</li>
+              <li><span class="dot"></span>Mobile performance optimization</li>
+              <li><span class="dot"></span>Tooling &amp; reusable modules for rapid builds</li>
+            </ul>
+            <div class="pillrow">
+              <span class="pill">Unity</span>
+              <span class="pill">C#</span>
+              <span class="pill">Optimization</span>
+              <span class="pill">Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="body">
+            <h3>Game Design &amp; Level Design</h3>
+            <p>Simple mechanics with scalable depth—clarity first, progression through levels.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Puzzle mechanics &amp; progression loops</li>
+              <li><span class="dot"></span>Onboarding &amp; readability through feedback</li>
+              <li><span class="dot"></span>Difficulty pacing and level structure</li>
+            </ul>
+            <div class="pillrow">
+              <span class="pill">Mechanics</span>
+              <span class="pill">Progression</span>
+              <span class="pill">UX Clarity</span>
+              <span class="pill">Level Pacing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="body">
+            <h3>Production Leadership</h3>
+            <p>Lean production culture—parallel execution across roles and clear decision-making.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Agile planning with Jira</li>
+              <li><span class="dot"></span>Daily sync + continuous collaboration</li>
+              <li><span class="dot"></span>Fast prototype → test → ship loop</li>
+            </ul>
+            <div class="pillrow">
+              <span class="pill">Jira</span>
+              <span class="pill">Agile</span>
+              <span class="pill">Milestones</span>
+              <span class="pill">Ownership</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="body">
+            <h3>Platform Engineering Background</h3>
+            <p>Mobile + backend + CI/CD experience strengthens reliability, delivery, and scalability.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Cross-platform mobile delivery</li>
+              <li><span class="dot"></span>Backend architecture &amp; services</li>
+              <li><span class="dot"></span>CI/CD processes and release discipline</li>
+            </ul>
+            <div class="pillrow">
+              <span class="pill">Mobile</span>
+              <span class="pill">Backend</span>
+              <span class="pill">CI/CD</span>
+              <span class="pill">Microservices</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <h2>Selected Game Projects</h2>
+        <div class="hint"></div>
+      </div>
+
+      <div class="projects">
+        <article class="card">
+          <div class="body">
+            <div class="project-top">
+              <div>
+                <h3>Mirror Blocks <span style="opacity:.7;font-weight:500;">(3D Puzzle)</span></h3>
+                <div class="meta">
+                  <span>Role: GD • 3D Artist • Dev • Level Design</span>
+                  <span>Engine: Unity</span>
+                </div>
+              </div>
+              <a class="link" href="https://play.google.com/store/apps/details?id=vn.getjsc.mirrorblocks" target="_blank" rel="noopener">Google Play ↗</a>
+            </div>
+            <p>3D puzzle experience focused on spatial logic and visual interaction. I led end‑to‑end execution.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Designed core puzzle rules and progression</li>
+              <li><span class="dot"></span>Created 3D assets and visual direction</li>
+              <li><span class="dot"></span>Implemented gameplay systems and optimized mobile performance</li>
+            </ul>
+          </div>
+          </article>
+
+        <article class="card">
+          <div class="body">
+            <div class="project-top">
+              <div>
+                <h3>Galaxy Gems: Color Escape <span style="opacity:.7;font-weight:500;">(3D Puzzle)</span></h3>
+                <div class="meta">
+                  <span>Role: GD • 3D Artist • Dev • Level Design</span>
+                  <span>Engine: Unity</span>
+                </div>
+              </div>
+              <a class="link" href="https://play.google.com/store/apps/details?id=vn.getjsc.gbj" target="_blank" rel="noopener">Google Play ↗</a>
+            </div>
+            <p>Color-based puzzle mechanics in a 3D environment with strong readability and scalable levels.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Defined core loop and interaction feedback</li>
+              <li><span class="dot"></span>Designed levels for increasing complexity</li>
+              <li><span class="dot"></span>Owned art direction and full implementation</li>
+            </ul>
+          </div>
+          </article>
+
+        <article class="card">
+          <div class="body">
+            <div class="project-top">
+              <div>
+                <h3>Match 4 Saga <span style="opacity:.7;font-weight:500;">(2D Puzzle)</span></h3>
+                <div class="meta">
+                  <span>Role: GD • 2D Artist • Dev • Level Design</span>
+                  <span>Engine: Unity</span>
+                </div>
+              </div>
+              <a class="link" href="https://play.google.com/store/apps/details?id=vn.getjsc.match4" target="_blank" rel="noopener">Google Play ↗</a>
+            </div>
+            <p>2D puzzle game emphasizing pattern recognition, clarity, and structured progression.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Built rules and scalable progression</li>
+              <li><span class="dot"></span>Created 2D art and UI assets</li>
+              <li><span class="dot"></span>Implemented systems and tuned performance</li>
+            </ul>
+          </div>
+          </article>
+
+        <article class="card">
+          <div class="body">
+            <div class="project-top">
+              <div>
+                <h3>Ball Hunter <span style="opacity:.7;font-weight:500;">(2D Casual)</span></h3>
+                <div class="meta">
+                  <span>Role: GD • 2D Artist • Dev • Level Design</span>
+                  <span>Engine: Unity</span>
+                </div>
+              </div>
+              <a class="link" href="https://play.google.com/store/apps/details?id=vn.getjsc.ballhunter" target="_blank" rel="noopener">Google Play ↗</a>
+            </div>
+            <p>Casual 2D game designed for quick sessions, responsive interaction, and clear progression.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Designed quick-loop mechanics for mobile</li>
+              <li><span class="dot"></span>Delivered art + implementation end-to-end</li>
+              <li><span class="dot"></span>Optimized feel and feedback for satisfying play</li>
+            </ul>
+          </div>
+          </article>
+      </div>
+    </section>
+
+    
+    <section id="leadership-projects">
+      <div class="section-head">
+        <h2>Additional Projects & Leadership Contributions</h2>
+        <div class="hint"></div>
+      </div>
+
+      <div class="projects">
+        <article class="card">
+          <div class="body">
+            <div class="project-top">
+              <div>
+                <h3>Color Tray Puzzle</h3>
+                <div class="meta">
+                  <span>Role: Production Lead • Game Designer • Technical Support</span>
+                  <span>Genre: Puzzle</span>
+                </div>
+              </div>
+              <a class="link" href="https://play.google.com/store/apps/details?id=com.g3.colortray" target="_blank" rel="noopener">Google Play ↗</a>
+            </div>
+            <p>Contributed to production leadership, core puzzle structure, and gameplay iteration support.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Defined gameplay direction and puzzle structure</li>
+              <li><span class="dot"></span>Supported team during iteration and testing phases</li>
+              <li><span class="dot"></span>Provided technical guidance during development</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="body">
+            <div class="project-top">
+              <div>
+                <h3>Color Flow Fusion</h3>
+                <div class="meta">
+                  <span>Role: Game Designer • Technical Advisor</span>
+                  <span>Genre: Puzzle</span>
+                </div>
+              </div>
+              <a class="link" href="https://play.google.com/store/apps/details?id=com.g3.ColorFlowFusion" target="_blank" rel="noopener">Google Play ↗</a>
+            </div>
+            <p>Provided design direction and technical advisory to help refine gameplay and production decisions.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Supported gameplay design improvements</li>
+              <li><span class="dot"></span>Advised on technical implementation choices</li>
+              <li><span class="dot"></span>Helped align production with puzzle design goals</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="section-head">
+        <h2>How I Lead Game Production</h2>
+        <div class="hint"></div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="body">
+            <h3>High‑Velocity Cycle (2–4 weeks)</h3>
+            <p>Parallel execution to compress time-to-market while keeping alignment.</p>
+            <ul class="list">
+              <li><span class="dot"></span><b>Ideation</b> → align on core mechanic and scope</li>
+              <li><span class="dot"></span><b>Parallel build</b> → design + art + level + dev run together</li>
+              <li><span class="dot"></span><b>Prototype test</b> → playtest, tune difficulty, iterate fast</li>
+              <li><span class="dot"></span><b>Polish</b> → bug fixes, readability improvements, release prep</li>
+              <li><span class="dot"></span><b>Release</b> → creative video, store setup, publish</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="body">
+            <h3>Growth Focus</h3>
+            <p>Clear areas we’re investing in to level up studio quality and growth.</p>
+            <ul class="list">
+              <li><span class="dot"></span>Animation polish (feel, transitions, juice)</li>
+              <li><span class="dot"></span>Creative video + metric optimization</li>
+              <li><span class="dot"></span>More experience in UA and reaching players at scale</li>
+              <li><span class="dot"></span>Expand 3D art capability (dedicated 3D artist)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <div class="hint"></div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+          <div class="grid" style="grid-template-columns: 1.2fr .8fr;">
+            <div>
+              <h3>Get in touch</h3>
+              <p>If you’d like to collaborate, discuss publishing, or review prototypes, feel free to reach out.</p>
+
+              <div style="margin-top: 14px;">
+                <div class="k">Email</div>
+                <div class="v"><a href="mailto:tungnv@getjsc.vn">tungnv@getjsc.vn</a></div>
+              </div>
+              <div style="margin-top: 10px;">
+                <div class="k">Phone</div>
+                <div class="v"><a href="tel:+84356226909">+84 356 226 909</a></div>
+              </div>
+              <div style="margin-top: 10px;">
+                <div class="k">Location</div>
+                <div class="v">Ha Noi, Viet Nam</div>
+              </div>
+            </div>
+
+            <div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="y"></span> Nguyen Vu Tung • Founder Portfolio</div>
+      <div class="mono">Single‑file HTML • Replace images by setting the <span class="mono">src</span> attribute</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.querySelectorAll('.shot').forEach(box => {
+      const img = box.querySelector('img');
+      const label = box.querySelector('.label');
+      const update = () => {
+        const src = (img.getAttribute('src') || '').trim();
+        const has = src.length > 0;
+        img.style.opacity = has ? '1' : '0';
+        label.style.opacity = has ? '0' : '1';
+      };
+      update();
+      img.addEventListener('load', update);
+    });
+  </script>
+</body>
+</html>
